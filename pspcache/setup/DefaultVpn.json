@@ -1,0 +1,60 @@
+{
+    "sempVersion": "2.23",
+    "msgVpns": [
+        {
+            "msgVpnName": "default",
+            "__skipThisObject": true,
+            "clientUsernames": [
+                {
+                    "clientUsername": "cache",
+                    "password": "password",
+                    "enabled": true
+                },
+                {
+                    "clientUsername": "fx",
+                    "password": "password",
+                    "enabled": true
+                },
+                {
+                    "clientUsername": "default",
+                    "password": "password",
+                    "enabled": true
+                }
+            ],
+            "distributedCaches": [
+                {
+                    "cacheName": "DemoCache",
+                    "enabled": true,
+                    "clusters": [
+                        {
+                            "clusterName": "Cluster01",
+                            "enabled": true,
+                            "maxMemory": 2048,
+                            "maxMsgsPerTopic": 1000,
+                            "msgLifetime": 600,
+                            "instances": [
+                                {
+                                    "autoStartEnabled": true,
+                                    "enabled": true,
+                                    "instanceName": "cache01",
+                                    "stopOnLostMsgEnabled": false
+                                },
+                                {
+                                    "autoStartEnabled": true,
+                                    "enabled": true,
+                                    "instanceName": "cache02",
+                                    "stopOnLostMsgEnabled": false
+                                }
+                            ],
+                            "topics": [
+                                {
+                                    "topic": "fx/rt/>"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

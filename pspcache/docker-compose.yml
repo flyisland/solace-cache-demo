@@ -1,0 +1,72 @@
+# docker-compose -f docker-compose.yml up
+version: "3.5"
+
+networks:
+  demo_net: {}
+
+services:
+  pscache01:
+    container_name: cache01
+    image: island/pspcache:0.1
+    networks:
+      - demo_net
+    volumes:
+      - ./setup/cacheConfig01.conf:/tmp/cacheConfig.conf:ro
+
+  pscache02:
+    container_name: cache02
+    image: island/pspcache:0.1
+    networks:
+      - demo_net
+    volumes:
+      - ./setup/cacheConfig02.conf:/tmp/cacheConfig.conf:ro
+
+  broker:
+    container_name: broker
+    image: solace/solace-pubsub-standard:latest
+    shm_size: 2g
+    ulimits:
+      nofile:
+        soft: 2448
+        hard: 38048
+    networks:
+      - demo_net
+    ports:
+      # Solace CLI SSH/SFTP
+      - 2222:2222
+      #Web transport
+      - "8008:8008"
+      #Web transport over TLS
+      - "443:443"
+      #MQTT Default VPN
+      - 1883:1883
+      #AMQP Default VPN over TLS
+      - "5671:5671"
+      #AMQP Default VPN
+      - "5672:5672"
+      #MQTT Default VPN over WebSockets
+      - 8000:8000
+      #MQTT Default VPN over WebSockets / TLS
+      - "8443:8443"
+      #MQTT Default VPN over TLS
+      - "8883:8883"
+      #SEMP / PubSub+ Manager
+      - "8080:8080"
+      #SEMP / PubSub+ Manager over TLS
+      - "1943:1943"
+      #REST Default VPN
+      - "9000:9000"
+      #REST Default VPN over TLS
+      - "9443:9443"
+      #SMF
+      - "44444:55555"
+      #SMF Compressed
+      - "55003:55003"
+      #SMF over TLS
+      - "55443:55443"
+      # Health Check
+      - "5550:5550"
+    environment:
+      - username_admin_globalaccesslevel=admin
+      - username_admin_password=admin
+      - system_scaling_maxconnectioncount=1000
