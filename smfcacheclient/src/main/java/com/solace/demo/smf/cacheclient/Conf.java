@@ -18,7 +18,7 @@ public class Conf {
 	@Parameter(names = "-w", description = "Authentication password", order = 21)
 	public String pwd = "default";
 
-	@Parameter(names = "-t", description = "Topic to subscribe", order = 30)
+	@Parameter(names = "-t", description = "Topic to subscribe", required = true, order = 30)
 	public String topic;
 
 	public void parse(String[] args) {
