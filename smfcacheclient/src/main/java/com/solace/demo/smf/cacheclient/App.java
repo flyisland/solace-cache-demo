@@ -57,7 +57,8 @@ public class App extends BaseApp {
             cons.start();
             Topic topic = JCSMPFactory.onlyInstance().createTopic(conf.topic);
 
-            CacheSessionProperties cacheProps = new CacheSessionProperties("DemoCache");
+            // https://docs.solace.com/API-Developer-Online-Ref-Documentation/java/com/solacesystems/jcsmp/CacheSessionProperties.html
+            CacheSessionProperties cacheProps = new CacheSessionProperties("DemoCache", 1, 0, 10000);
             cacheSession = session.createCacheSession(cacheProps);
 
             // Perform the cache request.
