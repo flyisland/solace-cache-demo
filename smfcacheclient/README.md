@@ -1,4 +1,4 @@
-# Solace Java Client to consume cached messages
+# [Solace Java Client to consume cached messages](https://docs.solace.com/Solace-PubSub-Cache/Working-with-the-JCSMP.htm)
 
 1. Run `./gradlew build` to build this project.
 1. Stop sending messages to the broker and wait for one minute
