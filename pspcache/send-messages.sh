@@ -1,6 +1,6 @@
 #!/bin/bash
 
-currencies=("USD/EUR" "USD/GBP" "USD/CAD" "USD/CNY" "USD/JPY")
+currencies=("CNY/USD" "CNY/JPY" "CNY/EUR" "USD/EUR" "USD/GBP" "USD/CAD" "USD/CNY" "USD/JPY")
 
 while true; do 
     for match in "${currencies[@]}"

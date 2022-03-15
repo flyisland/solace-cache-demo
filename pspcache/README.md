@@ -87,5 +87,6 @@ Sending '2022-03-15-14:31:28' to topic 'fx/rt/USD/EUR'
 
 ![](./images/cache-messages.png)
 
-
 ## Consume the cached messages
+
+1. To check how to consume the cached messages with SMF java client, please check the [smfcacheclient](../smfcacheclient) project
