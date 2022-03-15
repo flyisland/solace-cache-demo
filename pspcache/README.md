@@ -1,6 +1,6 @@
 # [Solace PubSub+ Cache](https://docs.solace.com/Solace-PubSub-Cache/PubSub-Cache-Overview.htm) Demo Setup
 
-## Setup
+## Build Solace PubSub+ Cache Docker Image
 
 1. [Contact Solace](https://docs.solace.com/get-support.htm) to get the PubSub+ Cache installation package and put them under the `./Docker` folder.
 
@@ -14,7 +14,7 @@ total 35704
 -rw-r--r--  1 ichen  staff   206B Mar 15 11:11 startCache.sh
 ```
 
-2. Under folder `Docker`, run `./docker-build-osx.sh` to build docker image
+2. Under folder `Docker`, run `./docker-build-osx.sh` to build the docker image
 3. Verify the image is successfully built.
 
 ```textfile
