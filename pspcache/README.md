@@ -86,3 +86,6 @@ Sending '2022-03-15-14:31:28' to topic 'fx/rt/USD/EUR'
 5. Now you could find that there are some messages in the cache
 
 ![](./images/cache-messages.png)
+
+
+## Consume the cached messages

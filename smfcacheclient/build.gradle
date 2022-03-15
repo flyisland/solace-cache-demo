@@ -1,0 +1,55 @@
+import java.text.SimpleDateFormat
+
+plugins {
+    id "java"
+}
+
+group 'com.solace.demo.smf.cacheclient'
+version '1.1.5'
+def longVersion = version + ", Build time: "+ new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+
+repositories {
+    // Use JCenter for resolving dependencies.
+    jcenter()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+jar {
+    archiveFileName = rootProject.name+".jar"
+    manifest {
+        attributes "Main-Class": "com.solace.demo.smf.cacheclient.App",
+                'Implementation-Title': rootProject.name,
+                'Implementation-Version': version
+    }
+
+    from {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+dependencies {
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+
+    // Use JUnit Jupiter Engine for testing.
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    // This dependency is used by the application.
+    // https://mvnrepository.com/artifact/com.solacesystems/sol-jcsmp
+    implementation group: 'com.solacesystems', name: 'sol-jcsmp', version: '10.13.1'
+    // https://mvnrepository.com/artifact/com.beust/jcommander
+    implementation group: 'com.beust', name: 'jcommander', version: '1.82'
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.11'
+}
+
+tasks.named('test') {
+    // Use junit platform for unit tests.
+    useJUnitPlatform()
+}
