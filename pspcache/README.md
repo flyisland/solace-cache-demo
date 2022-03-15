@@ -8,13 +8,13 @@
 total 35704
 -rw-r--r--  1 ichen  staff   813B Mar 15 11:28 Dockerfile
 -rwxr-xr-x  1 ichen  staff   377B Mar 15 11:18 docker-build-linux.sh
--rwxr-xr-x  1 ichen  staff   378B Mar 15 10:48 docker-build-osx.sh
+-rwxr-xr-x  1 ichen  staff   378B Mar 15 10:48 docker-build-macos.sh
 -rw-r--r--@ 1 ichen  staff   3.9M Mar 15 09:29 solcache_Linux26-x86_64_opt_7.2.2.20.tar.gz
 -rw-r--r--@ 1 ichen  staff    13M Mar 15 08:49 solclient_Linux26-x86_64_opt_7.21.0.5.tar.gz
 -rw-r--r--  1 ichen  staff   206B Mar 15 11:11 startCache.sh
 ```
 
-2. Under folder `Docker`, run `./docker-build-osx.sh` to build the docker image
+2. Under folder `Docker`, run `./docker-build-macos.sh` to build the docker image
 3. Verify the image is successfully built.
 
 ```textfile
