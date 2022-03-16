@@ -72,12 +72,12 @@ public class CacheApplication implements CommandLineRunner {
 
 	protected void onCacheRequest(final BytesXMLMessage msg) {
 		final String json;
-		if (msg instanceof TextMessage) {
-			json = ((TextMessage) msg).getText();
-		} else if (msg instanceof BytesMessage) {
+		if (msg instanceof BytesMessage) {
 			json = new String(((BytesMessage) msg).getData());
+		} else if (msg instanceof TextMessage) {
+			json = ((TextMessage) msg).getText();
 		} else {
-			logger.warn("Unknow message!");
+			logger.warn("Unknown message type of cache request!");
 			return;
 		}
 
