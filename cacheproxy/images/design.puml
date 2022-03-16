@@ -1,0 +1,32 @@
+@startuml design
+actor "Non-SMF Client\n(AMQP/MQTT/...)" as client
+participant "TOPIC\ncache/request" as tRequest
+participant "TOPIC\ninbox/my-unique-id" as tReply
+control     "Microservice\nCache Proxy"     as cp
+collections "PS+ Cache" as pscache
+
+cp -> pscache: Create Cache Session(SMF)
+note over cp, pscache #Implementation
+Specify the name of the PS+ cache, the
+maximum number of messages per Topic
+and the maximum message age in seconds
+end note
+cp -> tRequest: Subscribe to
+== ==
+client -> tReply: Subscribe to 
+hnote right #Technology: "inbox/123"
+client -> tRequest: Send Cache Request
+hnote over client, tRequest #Technology
+{
+   "topic": "fx/rt/>",
+   "replyTo": "inbox/123"
+}
+end note
+tRequest -> cp: Receive cache reqeust
+cp -> pscache: Send Cache Request (SMF)
+hnote right #Technology: "fx/rt/>"
+pscache --> cp : Receive cached messages
+cp -> tReply: Forward cached messages
+hnote left #Technology: "inbox/123"
+tReply -> client: Receive cached messages
+@enduml
