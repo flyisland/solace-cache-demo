@@ -107,13 +107,10 @@ public class CacheApplication implements CommandLineRunner {
 				return;
 			}
 
-			// TODO: Add original topic as a header property
-			// TODO: Support non-text msg, could I just re-send the msg?
-
-			final String text = ((TextMessage) msg).getText();
-			TextMessage message = JCSMPFactory.onlyInstance().createMessage(TextMessage.class);
-			message.setText(text);
-			prod.send(message, JCSMPFactory.onlyInstance().createTopic(cr.getReplyTo()));
+			// this input `msg` is readonly, so we need to clone it
+			BytesXMLMessage clone = JCSMPFactory.onlyInstance().createMessage(msg);
+			// TODO: Do we need to add the original topic to the clone message?
+			prod.send(clone, JCSMPFactory.onlyInstance().createTopic(cr.getReplyTo()));
 		} catch (final Exception e) {
 			logger.warn("onCachedMessage: {}", e);
 		}
