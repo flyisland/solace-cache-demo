@@ -1,6 +1,6 @@
 # Cache Proxy
 
-A microservice to work as a proxy to accept cache requests from non-SMF clients then forwards those cache requests to the PS+ broker with SMF protocol, then forwards the cache reply messages back to the non-SMF clients.
+A microservice that acts as a proxy to receive cache requests from non-SMF clients, forwards those requests to the PS+ broker using the SMF protocol, and then forwards the cache reply messages back to the non-SMF clients.
 
 ![](images/design.svg)
 

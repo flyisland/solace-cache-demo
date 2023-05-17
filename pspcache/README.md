@@ -3,7 +3,6 @@
 ## Prerequisites
 
 1. [Docker Engine](https://docs.docker.com/engine/)
-2. [Docker Compose](https://docs.docker.com/compose/)
 
 ## Build Solace PubSub+ Cache Docker Image
 
@@ -30,7 +29,7 @@ island/pspcache   0.1       d6a9983f4a2e   10 minutes ago   209MB
 
 ## Start the Solace PubSub+ Cache broker and cache instances
 
-1. run `docker-compose up -d`
+1. run `docker compose up -d`
 
 ```textfile
 > docker-compose up -d
